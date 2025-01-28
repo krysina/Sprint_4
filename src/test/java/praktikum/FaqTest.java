@@ -1,10 +1,14 @@
 package praktikum;
 
-import org.junit.*;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.ClassRule;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import praktikum.pages.FaqPage;
+
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -51,7 +55,6 @@ public class FaqTest {
         FaqPage.clickOnQuestion(itemId);
         FaqPage.waitForAnswer(itemId);
         String text = FaqPage.getAnswer(itemId);
-        System.out.println(text);
         assertEquals(answer, text);
     }
 
