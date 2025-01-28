@@ -1,5 +1,6 @@
 package praktikum;
 
+import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
@@ -8,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
 import praktikum.pages.MainPage;
+
+import static org.hamcrest.CoreMatchers.startsWith;
 
 @RunWith(Parameterized.class)
 public class OrderTest {
@@ -88,6 +91,10 @@ public class OrderTest {
         orderPageAboutRent.clickButtonOrder();
         //Клик кнопки "Да" подтверждения заказа
         orderPageAboutRent.clickOnButtonYes();
+        //Получение текста сообщения об оформлении заказа
+        String text = orderPageAboutRent.getTextModalCompleted();
+        //Сверяем, что текст сообщения начинается с "Заказ оформлен"
+        MatcherAssert.assertThat(text, startsWith(EnvConfig.EXPECTED_TEXT));
 
     }
 
@@ -123,6 +130,10 @@ public class OrderTest {
         orderPageAboutRent.clickButtonOrder();
         //Клик кнопки "Да" подтверждения заказа
         orderPageAboutRent.clickOnButtonYes();
+        //Получение текста сообщения об оформлении заказа
+        String text = orderPageAboutRent.getTextModalCompleted();
+        //Сверяем, что текст сообщения начинается с "Заказ оформлен"
+        MatcherAssert.assertThat(text, startsWith(EnvConfig.EXPECTED_TEXT));
 
     }
 

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import praktikum.EnvConfig;
+
 import java.time.Duration;
 
 public class OrderPageAboutRent {
@@ -20,7 +21,7 @@ public class OrderPageAboutRent {
     protected final By orderButton = By.xpath(".//button[contains(@class,'Button_Middle__1CSJM') and text()='Заказать']");
     protected final By orderModal = By.className("Order_Modal__YZ-d3");
     protected final By buttonYes = By.xpath(".//div[@class='Order_Modal__YZ-d3']/div[@class='Order_Buttons__1xGrp']/button[text()='Да']");
-    protected final By placedModal = By.xpath(".//div[@class='Order_ModalHeader__3FDaJ' and text()='Заказ оформлен']");
+    protected final By placedModal = By.className("Order_ModalHeader__3FDaJ");
 
     public OrderPageAboutRent(WebDriver driver) {
         this.driver = driver;
@@ -70,5 +71,10 @@ public class OrderPageAboutRent {
         driver.findElement(buttonYes).click();
         new WebDriverWait(driver, Duration.ofSeconds(EnvConfig.EXPLICIT_WAIT))
                 .until(ExpectedConditions.visibilityOfElementLocated(placedModal));
+    }
+
+    //Получение текста сообщения об оформлении заказа "Заказ оформлен"
+    public String getTextModalCompleted () {
+        return driver.findElement(placedModal).getText();
     }
 }
