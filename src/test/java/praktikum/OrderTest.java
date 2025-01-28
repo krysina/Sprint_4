@@ -1,6 +1,9 @@
 package praktikum;
 
-import org.junit.*;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Rule;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.WebDriver;
@@ -54,7 +57,7 @@ public class OrderTest {
 
 
     @Test
-    public void orderMainPage() {
+    public void orderOnButtonTop() {
         WebDriver driver = factory.getDriver();
         //Создать объект класса главной страницы MainPage
         var mainPage = new MainPage(driver);
@@ -89,7 +92,7 @@ public class OrderTest {
     }
 
     @Test
-    public void openMainPage2() {
+    public void orderOnButtonBottom() {
         WebDriver driver = factory.getDriver();
         //Создать объект класса главной страницы MainPage
         var mainPage = new MainPage(driver);
